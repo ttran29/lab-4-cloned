@@ -6,16 +6,17 @@
  * @returns The sum of the two numbers if add is true and false otherwise.
  */
 function sumValues(num1, num2, add) {
+    let result;
     if (add) {
-        const result = 0;
 
         result = num1 + num2;
-
-        return result;
+        console.log(result);
     }
     else {
-        return !add;
+        return;
     }
+    
+    return result;
 }
 
 /**
@@ -25,15 +26,19 @@ function sumValues(num1, num2, add) {
  * @returns An array of each price's new price, after the discount is applied. Or false, if prices array is empty.
  */
 function discountPrices(prices, discount) {
-    const discounted = []
-    const length = prices.length;
-    let discountedPrice = 0
-    for(let i = 0; i < length; i++) {
-        discountedPrice += prices[i] * (1 - discount);
-        discounted.push(discountedPrice);
+    if (prices.length === 0) {
+      return false;  // Return false if the array is empty
     }
-
+  
+    let discounted = [];
+    for (let i = 0; i < prices.length; i++) {
+      let discountedPrice = prices[i] * (1 - discount);
+      discountedPrice = Math.round(discountedPrice * 100) / 100; 
+      discounted.push(discountedPrice);
+    }
+  
     return discounted;
-}
+  }
+  
 
 module.exports = {sumValues, discountPrices};
